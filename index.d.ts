@@ -385,10 +385,15 @@ declare namespace Ffmpeg {
         getAvailableFormats(callback: FormatsCallback): void;
 
         // ffprobe
-        ffprobe(): Promise<FfprobeResponse>
-        ffprobe(index: number): Promise<FfprobeResponse>;
-        ffprobe(options: string[]): Promise<FfprobeResponse>; // tslint:disable-line unified-signatures
-        ffprobe(index: number, options: string[]): Promise<FfprobeResponse>;
+        ffprobe(callback: (err: any, data: FfprobeData) => void): void;
+        ffprobe(index: number, callback: (err: any, data: FfprobeData) => void): void;
+        ffprobe(options: string[], callback: (err: any, data: FfprobeData) => void): void; // tslint:disable-line unified-signatures
+        ffprobe(index: number, options: string[], callback: (err: any, data: FfprobeData) => void): void;
+
+        ffprobeProcess(): Promise<FfprobeResponse>
+        ffprobeProcess(index: number): Promise<FfprobeResponse>;
+        ffprobeProcess(options: string[]): Promise<FfprobeResponse>; // tslint:disable-line unified-signatures
+        ffprobeProcess(index: number, options: string[]): Promise<FfprobeResponse>;
 
         // recipes
         saveToFile(output: string): FfmpegCommand;
